@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Games</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <script src="/assets/js/jquery-3.5.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/43a003dc84.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <h1 class="bigtitle1"><%= link_to "Game Hub", root_path, class:"bigtitle" %></h1>
+
+    <% if user_signed_in? %>
+   
+    <nav class="headerlist">
+      <ul class="headernav"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i><%= link_to " Logout ", destroy_user_session_path, class:"headernav", data: { turbo_method: :delete} %></ul>
+      <ul class="headernav"><i class="fa-solid fa-circle-user" style="color: #ffffff;"></i><%= link_to " My page", user_path(current_user.id), class:"headernav" %></ul>
+      <ul class="headernav"><i class="fa-solid fa-gamepad" style="color: #ffffff;"></i><%= link_to " All games", games_path, class:"headernav" %></ul>
+      <ul class="headernav"><i class="fa-solid fa-file-signature" style="color: #ffffff;"></i><%= link_to " New game", new_game_path, class:"headernav" %></ul>
+    </nav>
+   
+
+    <% else %>
+    <nav class="headerlist">
+      <ul class="headernav"><i class="fa-solid fa-user-check" style="color: #ffffff;"></i><%= link_to " Log in", new_user_session_path, class:"headernav" %></ul>
+      <ul class="headernav"><i class="fa-solid fa-user-plus" style="color: #ffffff;"></i><%= link_to " Sign up", new_user_registration_path, class:"headernav" %></ul>
+      <ul class="headernav"><i class="fa-solid fa-gamepad" style="color: #ffffff;"></i><%= link_to " All games", games_path, class:"headernav" %></ul>
+    </nav>
+    <% end %>
+    </header>
+
+    <%= yield %>
+
+
+  </body>
+</html>
