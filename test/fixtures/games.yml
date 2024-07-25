@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  gametitle: MyString
+  gamebody: MyText
+  gamehard: 1.5
+  gametime: MyString
+  gameclear: MyText
+  game_image_id: MyString
+
+two:
+  user_id: 1
+  gametitle: MyString
+  gamebody: MyText
+  gamehard: 1.5
+  gametime: MyString
+  gameclear: MyText
+  game_image_id: MyString
