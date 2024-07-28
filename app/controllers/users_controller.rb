@@ -7,11 +7,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @latest_post = @user.posts.order(created_at: :desc).first
   end
 
   def edit
     @user = User.find(params[:id])
-    if @game.user != current_user
+    if @user != current_user
       redirect_to games_path, alert: "アクセスできません"
     end
   end
@@ -24,9 +25,27 @@ class UsersController < ApplicationController
     end
   end
 
+# フォロー一覧
+def follows
+  user = User.find(params[:id])
+  @users = user.following_users
+end
+
+# フォロワー一覧
+def followers
+  user = User.find(params[:id])
+  @users = user.follower_users
+end
+
+def show
+  @user = User.find(params[:id])
+  @following_users = @user.following_users
+  @follower_users = @user.follower_users
+end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :profile, :usernumber, :profile_image)
+    params.require(:user).permit(:username, :email, :profile, :usernumber, :profile_image, :youtube, :twitter, :twitch, :sns, :discode)
   end
 end

@@ -1,0 +1,41 @@
+<% if @newgame.errors.any? %>
+    <h2><%= pluralize(@newgame.errors.count, "error") %>エラーがあります。必須を埋めてください。</h2>
+    <ul>
+        <% @newgame.error.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: @newgame do |f| %>
+    <%= f.label :image %>
+    <%= f.file_field :game_image, accept: "image/jpeg" %>
+
+    <%= f.label :title %>
+    <%= f.text_field :gametitle %>
+
+    <%= f.label :time %>
+    <%= f.text_field :gametime %>
+
+    <div>
+        <div class="ratings mb-3">
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+        </div>
+        <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+    </div>
+      <%= f.hidden_field :gamehard, id: "rating-value" %>
+
+
+
+    <%= f.label :clear %>
+    <%= f.text_area :gameclear %>
+
+    <%= f.label :review %>
+    <%= f.text_area :gamebody %>
+
+    <%= f.submit "submit" %>
+<% end %>

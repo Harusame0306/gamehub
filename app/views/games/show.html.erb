@@ -15,7 +15,7 @@
 
 <% if @game.user.id == current_user.id %>
     <%= link_to "Edit", edit_game_path(@game) %>
-    <%= link_to "Delete", game_path(@game) %>
+    <%= link_to "Delete", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %>
 <% end %>
 
 <small>
