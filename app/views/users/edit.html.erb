@@ -1,13 +1,16 @@
-<h1>Users edit</h1>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'mypage_edit' %>
+<% end %>
 
 <% if @user.errors.any? %>
-    <h2><%= pluralize(@user.errors.count, "error") %>エラーがあります。必須を埋めてください。</h2>
+    <h2><%= pluralize(@user.errors.count, "error") %>エラーがあります</h2>
     <ul>
         <% @user.error.full_messages.each do |message| %>
         <li><%= message %></li>
         <% end %>
     </ul>
-
+<% end %>
+    
 <%= form_with model: @user do |f| %>
 
   <div class="field">
@@ -30,6 +33,32 @@
     <%= f.text_area :profile %>
   </div>
 
+  <div class="field">
+    <%= f.label :"X" %><br />
+    <%= f.text_area :twitter, placeholder:"URLを入力してください" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Discord" %><br />
+    <%= f.text_area :discode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"youtube" %><br />
+    <%= f.text_area :youtube, placeholder:"URLを入力してください" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"twitch" %><br />
+    <%= f.text_area :twitch, placeholder:"URLを入力してください" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"other" %><br />
+    <%= f.text_area :sns, placeholder:"URLを入力してください" %>
+  </div>
+  
+  
   <div class="field">
     <%= f.label :"Email" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

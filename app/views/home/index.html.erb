@@ -1,6 +1,11 @@
 
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'home' %>
+<% end %>
+
+
 <% if user_signed_in? %>
-   <h1>ようこそ！さん</h1>
+   <h2 class="welcome">ようこそ！<%= @user.username %>さん</h2>
 
     <% else %>
     <nav>

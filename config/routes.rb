@@ -5,7 +5,16 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :users
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      get :follows, :followers
+    end
+      resources :relationships, only: [:create, :destroy]
+  end
+    
+
   resources :games
+  resources :newgames
+  resources :posts
   
 end

@@ -1,0 +1,23 @@
+
+<%= attachment_image_tag @newgame, :game_image, format: 'jpeg', size: "100x100" %>
+<h3>title</h3>
+<%= @newgame.gametitle %>
+
+<h3>cleartime</h3>
+<%= @newgame.gametime %>
+<h3>clear level</h3>
+<%= @newgame.gameclear %>
+<h3>score</h3>
+<%= @newgame.gamehard %>
+<h3>review</h3>
+<%= simple_format @newgame.gamebody %>
+
+
+<% if @newgame.user.id == current_user.id %>
+    <%= link_to "Edit", edit_newgame_path(@newgame) %>
+    <%= link_to "Delete", newgame_path(@newgame), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %>
+<% end %>
+
+<small>
+    <%= link_to user_path(@newgame.user.id) do %>By_<%= @newgame.user.username %><% end %>
+</small>

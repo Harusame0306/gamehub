@@ -14,3 +14,9 @@ Rails.application.config.assets.version = "1.0"
 Rails.application.config.assets.precompile += %w( bootstrap.min.js popper.js )
 ENV['EXECJS_RUNTIME'] = 'Node'
 
+
+Rails.application.config.assets.precompile += %w(
+  home.css
+  mypage.css
+  mypage_rdit.css
+ )

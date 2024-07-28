@@ -1,0 +1,12 @@
+<h1>AllGames</h1>
+
+<% @newgames.each do |newgame| %>
+<div>
+    <%= link_to newgame_path(newgame) do %>
+    <%= attachment_image_tag newgame, :game_image, format: 'jpeg', size: "100x100" %>
+    <% end %>
+    <%= link_to newgame_path(newgame) do %><%= game.gametitle %><% end %>
+    <%= link_to user_path(newgame.user.id) do %><%= newgame.user.username %><% end %>
+    <small><%= newgame.created_at %></small>
+</div>
+<% end %>

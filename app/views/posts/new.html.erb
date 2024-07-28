@@ -1,0 +1,19 @@
+<% if @post.errors.any? %>
+    <h2><%= pluralize(@post.errors.count, "error") %>エラーがあります。必須を埋めてください。</h2>
+    <ul>
+        <% @post.error.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: @post do |f| %>
+
+    <%= f.label :本文 %>
+    <%= f.text_area :body %>
+
+    <%= f.label :image %>
+    <%= f.file_field :game_image, accept: "image/jpeg" %>
+
+    <%= f.submit "submit" %>
+<% end %>

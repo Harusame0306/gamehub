@@ -75,3 +75,4 @@ gem 'jquery-rails'
 gem 'bootstrap'
 gem 'sassc-rails'
 gem 'mini_racer', platforms: :ruby
+gem 'kaminari'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_22_192422) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_27_150343) do
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
     t.string "gametitle"
@@ -19,6 +19,33 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_192422) do
     t.string "gametime"
     t.text "gameclear"
     t.string "game_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "newgames", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "gametitle"
+    t.float "gamehard"
+    t.text "gamebody"
+    t.string "gametime"
+    t.text "gameclear"
+    t.string "game_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "body"
+    t.string "game_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +62,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_192422) do
     t.string "usernumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "youtube"
+    t.text "twitter"
+    t.text "discode"
+    t.text "twitch"
+    t.text "sns"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
