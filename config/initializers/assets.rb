@@ -19,7 +19,6 @@ Rails.application.config.assets.precompile += %w(
   home.css
   mypage.css
   mypage_rdit.css
-  raty.css
   star.css
  )
 
