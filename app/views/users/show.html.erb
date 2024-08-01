@@ -2,6 +2,7 @@
   <%= stylesheet_link_tag 'mypage' %>
 <% end %>
 
+
 <div class="mytop">
     <div class="profileimage-box">
       <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "150x150", class:"profileimage" %>
@@ -133,14 +134,13 @@
   <% @user.games.each do |game| %>
     <div class="pastitem">
       <%= link_to game_path(game) do %>
-        <div class="pastimagebox" >
+        
         <%= attachment_image_tag game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"pastimage" %>
-        </div>
+       
       <% end %>
-      <div class="pasttitle">
-        <%= game.gametitle %><br/>
-        <%= game.gamehard %>
-      </div>
+        <div class="star-rating mb-2">
+          <div class="star-rating-front2" style="width: <%= game.game_gamehard_percentage %>%">★★★★★</div>
+        </div>
     </div>
   <% end %>
 </div>

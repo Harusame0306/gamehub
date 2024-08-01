@@ -1,4 +1,3 @@
-<h1>Games#new</h1>
 
 <% if @game.errors.any? %>
     <h2><%= pluralize(@game.errors.count, "error") %>エラーがあります。必須を埋めてください。</h2>
@@ -8,6 +7,14 @@
         <% end %>
     </ul>
 <% end %>
+
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "raty.js" %>
+<%= javascript_include_tag "application.js" %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'raty' %>
+<% end %>
+
 
 <%= form_with model: @game do |f| %>
     <%= f.label :image %>
@@ -19,18 +26,18 @@
     <%= f.label :time %>
     <%= f.text_field :gametime %>
 
-    <div>
-        <div class="ratings mb-3">
-          <span class="fa fa-star-o" id="star"></span>
-          <span class="fa fa-star-o" id="star"></span>
-          <span class="fa fa-star-o" id="star"></span>
-          <span class="fa fa-star-o" id="star"></span>
-          <span class="fa fa-star-o" id="star"></span>
-        </div>
-        <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+    <%= f.label :score %>
+    <%= f.hidden_field :gamehard, id: "rating-value" %>
+    <div class="main-rating">
+      <div class="ratings mb-3">
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+        <span class="fa fa-star-o" id="star"></span>
+      </div>
+      <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
     </div>
-      <%= f.hidden_field :gamehard, id: "rating-value" %>
-
 
 
     <%= f.label :clear %>
@@ -40,4 +47,10 @@
     <%= f.text_area :gamebody %>
 
     <%= f.submit "submit" %>
+<% end %>
+
+
+<%= javascript_include_tag 'star.js' %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'star' %>
 <% end %>

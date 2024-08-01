@@ -8,4 +8,7 @@ class Game < ApplicationRecord
     validates :game_image
   end
 
+  def game_gamehard_percentage
+    gamehard*20
+  end
 end
