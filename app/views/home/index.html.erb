@@ -3,7 +3,6 @@
   <%= stylesheet_link_tag 'home' %>
 <% end %>
 
-
 <% if user_signed_in? %>
    <h2 class="welcome">ようこそ！<%= @user.username %>さん</h2>
 
@@ -12,4 +11,5 @@
       <ul class="login1"><i class="fa-solid fa-user-check fa-xl" style="color: #ffffff;"></i><%= link_to " Log-in", new_user_session_path, class:"login" %></ul>
       <ul class="signup"><i class="fa-solid fa-user-plus fa-xl" style="color: #ffffff;"></i><%= link_to " Sign-up", new_user_registration_path, class:"login" %></ul>
     </nav>
-    <% end %>
+<% end %>
+

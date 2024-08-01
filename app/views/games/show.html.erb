@@ -7,8 +7,13 @@
 <%= @game.gametime %>
 <h3>clear level</h3>
 <%= @game.gameclear %>
+
 <h3>score</h3>
-<%= @game.gamehard %>
+<div class="star-rating mb-2">
+    <div class="star-rating-front" style="width: <%= @game.game_gamehard_percentage %>%">★★★★★</div>
+    <div class="star-rating-back">★★★★★</div>
+</div>
+
 <h3>review</h3>
 <%= simple_format @game.gamebody %>
 
@@ -21,3 +26,10 @@
 <small>
     <%= link_to user_path(@game.user.id) do %>By_<%= @game.user.username %><% end %>
 </small>
+
+
+
+<%= javascript_include_tag 'star.js' %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'star' %>
+<% end %>
