@@ -8,13 +8,6 @@
     </ul>
 <% end %>
 
-<%= javascript_include_tag "jquery.js" %>
-<%= javascript_include_tag "raty.js" %>
-<%= javascript_include_tag "application.js" %>
-<% content_for :css do %>
-  <%= stylesheet_link_tag 'raty' %>
-<% end %>
-
 
 <%= form_with model: @game do |f| %>
     <%= f.label :image %>
@@ -51,6 +44,7 @@
 
 
 <%= javascript_include_tag 'star.js' %>
+<%= javascript_include_tag "jquery.js" %>
 <% content_for :css do %>
   <%= stylesheet_link_tag 'star' %>
 <% end %>
