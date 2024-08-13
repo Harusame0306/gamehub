@@ -12,9 +12,17 @@ Rails.application.routes.draw do
       resources :relationships, only: [:create, :destroy]
   end
     
-
   resources :games
   resources :newgames
-  resources :posts
+
+  resources :posts do
+    resources :post_comments, only: [:create, :destroy]
+  end
+
+  resources :items do
+    collection do
+        get 'search'
+    end
+  end
   
 end

@@ -17,20 +17,7 @@
     <%= f.label :time %>
     <%= f.text_field :gametime %>
 
-    <div>
-        <div class="ratings mb-3">
-          <span class="fa fa-star-o" id="star"></span>
-          <span class="fa fa-star-o" id="star"></span>
-          <span class="fa fa-star-o" id="star"></span>
-          <span class="fa fa-star-o" id="star"></span>
-          <span class="fa fa-star-o" id="star"></span>
-        </div>
-        <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
-    </div>
-      <%= f.hidden_field :gamehard, id: "rating-value" %>
-
-
-
+   
     <%= f.label :clear %>
     <%= f.text_area :gameclear %>
 
@@ -39,3 +26,7 @@
 
     <%= f.submit "submit" %>
 <% end %>
+
+
+<%= javascript_include_tag "menu.js" %>
+<%= javascript_include_tag "jquery.js" %>

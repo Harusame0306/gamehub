@@ -1,16 +1,17 @@
 <% content_for :css do %>
   <%= stylesheet_link_tag 'mypage' %>
 <% end %>
-
+<%= javascript_include_tag "menu.js" %>
+<%= javascript_include_tag "jquery.js" %>
 
 <div class="mytop">
     <div class="profileimage-box">
       <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "150x150", class:"profileimage" %>
       <div class="follower">
-      <%= link_to follows_user_path(@user), class:"followlink" do %>
-      <td>follow <%= @user.followers.count %><% end %> / </td>
-      <%= link_to followers_user_path(@user), class:"followlink" do %>
-      <td>follower <%= @user.followeds.count %></td><% end %>
+        <%= link_to follows_user_path(@user), class:"followlink" do %>
+        <td>follow <%= @user.followers.count %><% end %> / </td>
+        <%= link_to followers_user_path(@user), class:"followlink" do %>
+        <td>follower <%= @user.followeds.count %></td><% end %>
       </div>
     </div>
     <div class="usertop">
@@ -34,27 +35,27 @@
             <ul>
                 <% if @user.discode.present? %>
                 <li class="snsitem">
-                  <i class="fa-brands fa-discord" style="color: #000000;"></i><%= @user.discode %>
+                  <i class="fa-brands fa-discord" style="color:#555;"></i><%= @user.discode %>
                 </li>
                 <% end %>
                 <% if @user.twitter.present? %>
                 <li class="snsitem">
-                  <i class="fa-brands fa-square-x-twitter" style="color: #000000;"></i><%= link_to @user.twitter, @user.twitter, class:"link" %>
+                  <i class="fa-brands fa-square-x-twitter" style="color: #555;"></i><%= link_to @user.twitter, @user.twitter, class:"link" %>
                 </li>
                 <% end %>
                 <% if @user.youtube.present? %>
                 <li class="snsitem">
-                  <i class="fa-brands fa-youtube" style="color: #000000;"></i><%= link_to @user.youtube, @user.youtube, class:"link" %>
+                  <i class="fa-brands fa-youtube" style="color: #555;"></i><%= link_to @user.youtube, @user.youtube, class:"link" %>
                 </li>
                 <% end %>
                 <% if @user.twitch.present? %>
                 <li class="snsitem">
-                 <i class="fa-brands fa-twitch" style="color: #000000;"></i><%= link_to @user.twitch, @user.twitch, class:"link" %>
+                 <i class="fa-brands fa-twitch" style="color: #555;"></i><%= link_to @user.twitch, @user.twitch, class:"link" %>
                 </li>
                 <% end %>
                 <% if @user.sns.present? %>
                 <li class="snsitem" >
-                  <i class="fa-solid fa-link" style="color: #000000;"></i><%= link_to @user.sns, @user.sns, class:"link" %>
+                  <i class="fa-solid fa-link" style="color: #555;"></i><%= link_to @user.sns, @user.sns, class:"link" %>
                 </li>
                 <% end %>
             </ul>
@@ -64,52 +65,55 @@
 </div>
 
 <div class="post">
-  
     <h2 class="now">Now
       <% if @user.id == current_user.id %>
         <%= link_to new_post_path do %>
         <i class="fa-regular fa-square-plus fa-xl" style="color: #545252;"></i>
-        <% end %></h2>
+        <% end %>
       <% end %>
-    
+    </h2>
   <div class="postbody">
-    <% if @latest_post %>
-      <div class="body"><%= @latest_post.body %></div>
-      <div><%= attachment_image_tag @latest_post, :game_image, format: 'jpeg', size: "100x100", class:"postimage" %></div>    
+    <% if @user.posts %>
+      <% @user.posts.order(created_at: :desc).take(1).each do |post| %>
+        <%= post.body %><br>
+        <%= attachment_image_tag post, :game_image, format: 'jpeg', size: "100x100", class:"postimage" %><br>
+        <% if post.user_id == current_user.id %>
+        <span>
+          <%= link_to post_path(post), data: { turbo_method: :delete} do %>
+          <i class="fa-solid fa-trash fa-lg" style="color: #555;"></i><% end %>
+        </span>
+        <% end %>
+      <% end %>
     <% else %>
       <p>No post</p>
     <% end %>
   </div>
-  <% if @latest_post %>
-  <% if @user.id == current_user.id %>
-  <div class="del"><%= link_to "Delete", post_path(@latest_post), data: { turbo_method: :delete }, class:"delete" %></div>
-  <% end %>
-  <% end %>
 
 </div>
-  
-<div class="box"></div>
 
 <main>
 
-<div class="newgames">
+<div class="playinggames">
     <% if @user.id == current_user.id %>
         <h2 class="playing">Playing
         <%= link_to new_newgame_path do %>
-        <i class="fa-regular fa-square-plus fa-xl" style="color: #ffffff;"></i>
-        <span class="add">add</span>
+        <i class="fa-regular fa-square-plus fa-xl" style="color: #555;"></i>
+        <span class="add"></span>
         <% end %></h2>
     <% else %>
         <h2 class="playing">Playing</h2>
     <% end %>
 
     <% @user.newgames.each do |newgame| %>
-      <div class="pastitem">
-        <%= link_to newgame_path(newgame) do %>
+      <div class="newitem">
+
+        
+          <%= link_to newgame_path(newgame) do %>
           <div class="pastimagebox">
-              <%= attachment_image_tag newgame, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"pastimage" %>
+          <%= attachment_image_tag newgame, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"pastimage" %>
           </div>
-        <% end %>
+          <% end %>
+        
         <div class="pasttitle">
           <%= newgame.gametitle %><br/>
         
@@ -125,19 +129,25 @@
       <% if @user.id == current_user.id %>
         <h2 class="played">Played
         <%= link_to new_game_path do %>
-        <i class="fa-regular fa-square-plus fa-xl" style="color: #ffffff;"></i>
-        <span class="add">add</span><% end %></h2>
+        <i class="fa-regular fa-square-plus fa-xl" style="color: #555;"></i>
+        <span class="add"></span><% end %></h2>
       <% else %>
         <h2 class="played">Played</h2>
       <% end %>
 
   <% @user.games.each do |game| %>
     <div class="pastitem">
-      <%= link_to game_path(game) do %>
-        
+
+      <% if game.game_image_id.present? %>
+        <%= link_to game_path(game) do %>
+        <%= image_tag game.game_image_id, size: "100x100", alt: "Game Image", class:"pastimage" %>
+        <% end %><br>
+      <% else %>
+        <%= link_to game_path(game) do %>
         <%= attachment_image_tag game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"pastimage" %>
-       
+        <% end %><br>
       <% end %>
+      <small><%= game.gametitle %></small><br>
         <div class="star-rating mb-2">
           <div class="star-rating-front" style="width: <%= game.game_gamehard_percentage %>%">★★★★★</div>
         </div>

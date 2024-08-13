@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_01_165410) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_12_111936) do
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
     t.string "gametitle"
@@ -32,6 +32,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_165410) do
     t.string "gametime"
     t.text "gameclear"
     t.string "game_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

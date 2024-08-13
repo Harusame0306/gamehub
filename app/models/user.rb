@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :games, dependent: :destroy
   has_many :newgames, dependent: :destroy
   has_many :posts, dependent: :destroy
-
+  has_many :post_comments, dependent: :destroy
+  
   # フォローをした、されたの関係
     has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
     has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

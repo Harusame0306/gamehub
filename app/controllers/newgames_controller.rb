@@ -3,7 +3,7 @@ class NewgamesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @newgames = Newgame.all
+    @newgames = Newgame.all.order(created_at: :desc)
   end
 
   def show
@@ -25,6 +25,7 @@ class NewgamesController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @newgame = Newgame.find(params[:id])
     if @newgame.user != current_user
       redirect_to games_path, alert: "アクセスできません"
@@ -48,6 +49,6 @@ class NewgamesController < ApplicationController
   private
 
   def newgame_params
-    params.require(:newgame).permit(:gametitle, :gamebody, :game_image, :gamehard, :gametime, :gameclear)
+    params.require(:newgame).permit(:gametitle, :gamebody, :game_image, :game_image_id, :gamehard, :gametime, :gameclear)
   end
 end

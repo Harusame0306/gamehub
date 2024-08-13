@@ -1,15 +1,90 @@
 
-<% content_for :css do %>
-  <%= stylesheet_link_tag 'home' %>
-<% end %>
 
-<% if user_signed_in? %>
-   <h2 class="welcome">ようこそ！<%= @user.username %>さん</h2>
-
-    <% else %>
+<% unless user_signed_in? %>
     <nav>
-      <ul class="login1"><i class="fa-solid fa-user-check fa-xl" style="color: #ffffff;"></i><%= link_to " Log-in", new_user_session_path, class:"login" %></ul>
-      <ul class="signup"><i class="fa-solid fa-user-plus fa-xl" style="color: #ffffff;"></i><%= link_to " Sign-up", new_user_registration_path, class:"login" %></ul>
+      <ul class="login1"><i class="fa-solid fa-user-check fa-xl" style="color: #787d7d;"></i><%= link_to " Log-in", new_user_session_path, class:"login" %></ul>
+      <ul class="signup"><i class="fa-solid fa-user-plus fa-xl" style="color: #787d7d;"></i><%= link_to " Sign-up", new_user_registration_path, class:"login" %></ul>
     </nav>
 <% end %>
 
+<div class="body">
+
+  <div class="allgames-box">
+  
+  <div class="newgames-box">
+      <h2>Playing games</h2>
+      <div class="newgames">
+      <% @newgames.each do |newgame| %>
+        <div class="newgame">
+          <%= link_to newgame_path(newgame), class:"link" do %><%= newgame.gametitle %><% end %><br>
+          <%= link_to newgame_path(newgame) do %>
+          <%= attachment_image_tag newgame, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"gameimage" %>
+          <% end %><br>
+          <%= link_to user_path(newgame.user.id), class:"link" do %><small class="user">user: <%= newgame.user.username %></small><% end %>
+        </div>
+      <% end %>
+      </div>
+      <span class="more"><%= link_to "more >", newgames_path, class:"link" %></span>
+  </div>
+  
+  <div class="games-box">
+      <h2>Game reviews</h2>
+      <div class="games">
+      <% @games.each do |game| %>
+        <div class="game">
+          <%= link_to game_path(game), class:"link" do %><%= game.gametitle %><% end %><br>
+          <%= link_to game_path(game) do %>
+          <%= attachment_image_tag game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"gameimage" %>
+          <% end %><br>
+          <%= link_to user_path(game.user.id), class:"link" do %><small class="user">user: <%= game.user.username %></small><% end %>
+        </div>
+      <% end %>
+      </div>
+      <span class="more"><%= link_to "more >", games_path, class:"link" %></span>
+  </div>
+  
+  <div class="users-box">
+    <h2>New Users</h2>
+    <div class="users">
+    <% @users.each do |user| %>
+      <div class="useritem">
+        <%= link_to user_path(user), class:"link" do %><%= user.username %><% end %><br>
+        <%= link_to user_path(user) do %>
+        <%= attachment_image_tag user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"userimage" %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+    <span class="more"><%= link_to "more >", users_path, class:"link" %></span>
+</div>
+
+  </div>
+  
+  <div class="posts-box">
+    <h2>Posts</h2>
+    <div class="posts">
+      <% @posts.each do |post| %>
+        <div class="postitem">
+          <div class="postuser">
+          <span><%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "40x40", class:"profileimage" %></span>
+          <span><%= post.user.username %></span>
+          </div>
+          <a><%= link_to post_path(post), class:"link" do %><%= post.body %><% end %></a><br>
+          <% if post.game_image.present? %>
+          <%= link_to post_path(post), class:"link" do %><%= attachment_image_tag post, :game_image, format: 'jpeg', size: "100x100", class:"postimage" %><% end %><br>
+          <% end %>
+          <span class="comment"><i class="fa-regular fa-comment" style="color: #555;"></i>  <%= post.post_comments.count %>
+          <%= link_to post_path(post), class:"link" do %><small><%= post.created_at %></small><% end %></span>
+        </div>
+      <% end %>
+    </div>
+    <span class="more"><%= link_to "more >", posts_path, class:"link" %></span>
+  </div>
+  
+  </div>
+  
+  <%= javascript_include_tag "menu.js" %>
+  <%= javascript_include_tag "jquery.js" %>
+  <% content_for :css do %>
+    <%= stylesheet_link_tag 'homeindex' %>
+  <% end %>

@@ -14,27 +14,51 @@
   </head>
 
   <body>
+
     <header>
 
     <h1 class="bigtitle1"><%= link_to "Game Hub", root_path, class:"bigtitle" %></h1>
 
     <% if user_signed_in? %>
     
-    <div class="headerlist">
-    <nav>
-      <ul class="headernav"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i><%= link_to " Logout ", destroy_user_session_path, class:"headernav", data: { turbo_method: :delete} %></ul>
-      <ul class="headernav"><i class="fa-solid fa-circle-user" style="color: #ffffff;"></i><%= link_to " My page", user_path(current_user.id), class:"headernav" %></ul>
-      <ul class="headernav"><i class="fa-solid fa-gamepad" style="color: #ffffff;"></i><%= link_to " All games", games_path, class:"headernav" %></ul>
-    </nav>
+    <div id="sp-menu">
+    <ul class="headerlist">
+      <li class="headernav"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i><%= link_to " Logout ", destroy_user_session_path, class:"headernav", data: { turbo_method: :delete} %></ul>
+      <li class="headernav"><i class="fa-solid fa-circle-user" style="color: #ffffff;"></i><%= link_to " My page", user_path(current_user.id), class:"headernav" %></ul>
+      <li class="headernav"><i class="fa-solid fa-gamepad" style="color: #ffffff;"></i><%= link_to " Home ", root_path, class:"headernav" %></ul>
+    </ul>
     </div>
-   
 
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
+    <span class="welcome">
+      <%= link_to user_path(current_user.id), class:"link" do %><%= current_user.username %><% end %><span>さん, welcome!</span>
+    </span>
+   
     <% else %>
-    <nav class="headerlist">
-      <ul class="headernav"><i class="fa-solid fa-user-check" style="color: #ffffff;"></i><%= link_to " Log in", new_user_session_path, class:"headernav" %></ul>
-      <ul class="headernav"><i class="fa-solid fa-user-plus" style="color: #ffffff;"></i><%= link_to " Sign up", new_user_registration_path, class:"headernav" %></ul>
-      <ul class="headernav"><i class="fa-solid fa-gamepad" style="color: #ffffff;"></i><%= link_to " All games", games_path, class:"headernav" %></ul>
-    </nav>
+
+    <div id="sp-menu">
+    <ul class="headerlist">
+      <li class="headernav"><i class="fa-solid fa-user-check" style="color: #ffffff;"></i><%= link_to " Log in", new_user_session_path, class:"headernav" %></ul>
+      <li class="headernav"><i class="fa-solid fa-user-plus" style="color: #ffffff;"></i><%= link_to " Sign up", new_user_registration_path, class:"headernav" %></ul>
+      <li class="headernav"><i class="fa-solid fa-gamepad" style="color: #ffffff;"></i><%= link_to " Home ", root_path, class:"headernav" %></ul>
+    </ul>
+    </div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
     <% end %>
     </header>
 
@@ -43,6 +67,9 @@
 
     <%= yield %>
 
-
+    
   </body>
 </html>
+
+<%= javascript_include_tag "menu.js" %>
+<%= javascript_include_tag "jquery.js" %>

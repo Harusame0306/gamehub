@@ -4,6 +4,45 @@
     box-sizing: border-box;
   }
 
+  .postitem{
+    margin: 50px;
+  }
+
   .postimage{
     border: none;
   }
+
+  .profileimage{
+    border-radius: 50%;
+  }
+
+  .postuser{
+    display: flex;
+    align-items: center;
+}
+
+.postuser span{
+    display: block; /* ブロックレベル要素に変更 */
+    height: 100%;
+    margin-right: 40px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.postbody{
+  margin-top: 20px;
+  margin-left: 15%;
+  font-size: 18px;
+}
+
+.postbody .td{
+  margin-left: 20%;
+}
+
+.icon{
+  margin-left: 20%;
+}
+.at{
+  font-size: small;
+  margin-left: 15px;
+}

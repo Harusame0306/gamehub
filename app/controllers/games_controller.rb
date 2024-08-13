@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
-    @games = Game.all
+    @games = Game.all.order(created_at: :desc)
   end
 
   def show
@@ -13,8 +13,14 @@ class GamesController < ApplicationController
   end
 
   def create
+    Rails.logger.debug "Received params: #{params.inspect}" # 追加
+
     @game = Game.new(game_params)
     @game.user_id = current_user.id
+
+    # デバッグ用のログを追加
+  Rails.logger.debug "Received game_image_id: #{params[:game][:game_image_id]}"
+
     if @game.save
       redirect_to game_path(@game), notice: "投稿しました"
     else
@@ -43,10 +49,9 @@ class GamesController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
-
   private
 
   def game_params
-    params.require(:game).permit(:gametitle, :gamebody, :game_image, :gamehard, :gametime, :gameclear)
+    params.require(:game).permit(:gametitle, :gamebody, :game_image_id, :game_image, :gamehard, :gametime, :gameclear)
   end
 end

@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #555;
+  }
+
+.body{
+    display: flex;
+}
+
+.allgames-box{
+   display: left;
+   margin-right: 3%;
+   width: 65%;
+}
+
+.newgames-box{
+    margin: 40px;
+    margin-top: 50px;
+    width: 90%;
+}
+
+.newgames{
+    display: flex;
+    flex-wrap: wrap; /* 要素を折り返す */
+    padding: 30px;
+    padding-bottom: 0;
+    border-top: 2px solid #555;
+    margin-top: 10px;
+}
+
+
+.newgames > div{
+    width: 25%;
+}
+
+.newgame{
+    padding: 3px;
+    margin-bottom: 20px;
+    border-bottom: 0.5px solid  #e0e0e0;
+    flex-direction: column;
+}
+
+.games-box{
+    margin: 40px;
+    margin-top: 50px;
+    width: 90%;
+}
+
+.games{
+    display: flex;
+    flex-wrap: wrap; /* 要素を折り返す */
+    padding: 30px;
+    padding-bottom: 0;
+    border-top: 2px solid #555;
+    margin-top: 10px;
+}
+
+.games > div{
+    width: 25%;
+}
+
+.game{
+    padding: 3px;
+    margin-bottom: 20px;
+    border-bottom: 0.5px solid  #e0e0e0;
+    flex-direction: column;
+}
+
+.gameimage{
+    border: none;
+    margin: 0;
+    margin-left: 20px;
+}
+
+.users-box{
+    margin: 40px;
+    margin-top: 50px;
+    width: 90%;
+}
+
+.users{
+    display: flex;
+    flex-wrap: wrap; /* 要素を折り返す */
+    padding: 30px;
+    padding-bottom: 0;
+    border-top: 2px solid #555;
+    margin-top: 10px;
+}
+
+.users > div{
+    width: 25%;
+}
+
+.useritem{
+    padding: 3px;
+    margin-bottom: 20px;
+    border-bottom: 0.5px solid  #e0e0e0;
+    flex-direction: column;
+}
+
+.user{
+    margin-left: 30%;
+}
+
+.userimage{
+    border-radius: 50%;
+    margin: 6px;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.more{
+    margin-left: 85%;
+    font-weight: bold;
+}
+
+
+.posts-box{
+    display: right;
+    width: 30%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.posts{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-top: 2px solid #555;
+}
+
+.postitem {
+    outline: 1px solid #555;
+    border-radius: 5%;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* 子要素を縦に並べる */
+}
+
+.comment{
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.postitem small {
+    font-size: xx-small;
+    margin-left: 35%;
+}
+
+.posts-box .more{
+    margin-left: 70%;
+    font-weight: bold;
+}
+
+.postitem a{
+    text-align: center;
+}
+
+.postimage{
+    margin: 0 auto;
+}
+
+.postuser{
+    display: flex;
+    align-items: center;
+}
+
+.postuser span{
+    display: block; /* ブロックレベル要素に変更 */
+    height: 100%;
+    margin-right: 25px;
+    font-weight: bold;
+}
+
+
+.profileimage{
+    border-radius: 50%;
+}
+

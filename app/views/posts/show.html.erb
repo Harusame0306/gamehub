@@ -1,6 +1,41 @@
+
+
+<div class="postitem">
+
+  <div class="postuser">
+    <span><%= attachment_image_tag @post.user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"profileimage" %></span>
+    <span><%= @post.user.username %></span>
+  </div>
+  <div class="postbody">
+    <%= @post.body %><br>
+    <% if @post.game_image.present? %>
+    <%= attachment_image_tag @post, :game_image, format: 'jpeg', size: "100x100", class:"postimage" %><br>
+    <% end %><br><br>
+    <span class="icon"><i class="fa-regular fa-comment fa-lg" style="color: #555;"></i>  <%= @post.post_comments.count %>
+    <span class="at"><%= @post.created_at %></span></span>
+  </div>
+
+
+</div>
+
+<%= form_for [@post, @post_comment] do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit "送信する" %>
+<% end %>
+
+
+
+<% @post.post_comments.each do |post_comment| %>
+  <%= post_comment.user.username %>
+  <%= post_comment.comment %>
+  <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+  <%= link_to '削除', post_post_comment_path(post_comment), data: { turbo_method: :delete} %>
+<% end %>
+
+
+<%= javascript_include_tag "menu.js" %>
+<%= javascript_include_tag "jquery.js" %>
 <% content_for :css do %>
   <%= stylesheet_link_tag 'post_show' %>
 <% end %>
 
-<%= @post.body %>
-<%= attachment_image_tag @post, :game_image, format: 'jpeg', size: "300x300", class:"postimage" %>

@@ -9,42 +9,52 @@
 <% end %>
 
 
-<%= form_with model: @game do |f| %>
+<div class="textform">
+
+<%= form_with model: @game, local: true, id: 'review_form' do |f| %>
+
+<% if params[:image_id].present? %>
+  <%= image_tag params[:image_id], class: 'displayed-image' %>
+<% end %>
+
     <%= f.label :image %>
-    <%= f.file_field :game_image, accept: "image/jpeg" %>
-
+    <%= f.hidden_field :game_image_id, id: "hidden_image_id", value: params[:image_id] %><br>
+    <br>
     <%= f.label :title %>
-    <%= f.text_field :gametitle %>
-
+    <%= f.text_field :gametitle %><br>
+    <br>
     <%= f.label :time %>
-    <%= f.text_field :gametime %>
-
+    <%= f.text_field :gametime %><br>
+    <br>
     <%= f.label :score %>
     <%= f.hidden_field :gamehard, id: "rating-value" %>
-    <div class="main-rating">
-      <div class="ratings mb-3">
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
+      <div class="main-rating">
+        <div class="ratings mb-3">
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+        </div>
+        <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
       </div>
-      <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
-    </div>
-
-
+    <br>
     <%= f.label :clear %>
-    <%= f.text_area :gameclear %>
-
+    <%= f.text_area :gameclear %><br>
+    <br>
     <%= f.label :review %>
-    <%= f.text_area :gamebody %>
-
-    <%= f.submit "submit" %>
+    <%= f.text_area :gamebody %><br>
+    <br>
+    <%= f.submit 'Save', class: "form-control btn btn-success" %>
 <% end %>
+
+
+</div>
 
 
 <%= javascript_include_tag 'star.js' %>
 <%= javascript_include_tag "jquery.js" %>
+
 <% content_for :css do %>
   <%= stylesheet_link_tag 'star' %>
 <% end %>

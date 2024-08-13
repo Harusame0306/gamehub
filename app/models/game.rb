@@ -5,10 +5,10 @@ class Game < ApplicationRecord
   with_options presence: true do
     validates :gametitle
     validates :gamebody
-    validates :game_image
+    validates :gamehard
   end
 
   def game_gamehard_percentage
-    gamehard*20
+    gamehard.present? ? gamehard * 20 : 0
   end
 end

@@ -1,12 +1,25 @@
-<h1>AllGames</h1>
 
-<% @games.each do |game| %>
-<div>
-    <%= link_to game_path(game) do %>
-    <%= attachment_image_tag game, :game_image, format: 'jpeg', size: "100x100" %>
+
+
+<div class="games-box">
+    <h2>Game reviews</h2>
+    <div class="games">
+    <% @games.each do |game| %>
+      <div class="game">
+        <%= link_to game_path(game), class:"link" do %><%= game.gametitle %><% end %><br>
+        <%= link_to game_path(game) do %>
+        <%= attachment_image_tag game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"gameimage" %>
+        <% end %><br>
+        <%= link_to user_path(game.user.id), class:"link" do %><small class="user">user: <%= game.user.username %></small><% end %>
+      </div>
     <% end %>
-    <%= link_to game_path(game) do %><%= game.gametitle %><% end %>
-    <%= link_to user_path(game.user.id) do %><%= game.user.username %><% end %>
-    <small><%= game.created_at %></small>
+    </div>
+    <span class="more"><%= link_to "more >", games_path, class:"link" %></span>
 </div>
+
+
+<%= javascript_include_tag "menu.js" %>
+<%= javascript_include_tag "jquery.js" %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'homeindex' %>
 <% end %>

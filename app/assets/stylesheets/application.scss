@@ -8,7 +8,7 @@
 header{
   width: 100%;
   height: 100px;
-  background-color: #453f7e;
+  background-color: #f5d63b;
 }
 
 .bigtitle1{
@@ -23,24 +23,39 @@ header{
   float: left;
 }
 
+.welcome{
+  color: white;
+  position: absolute;
+  right: 110px; /* 必要に応じて調整 */
+  top: 60px;
+  font-weight: bold;
+}
 
+.welcome span{
+  color: white;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.welcome .link{
+  color: white;
+  text-decoration: none;
+  color: inherit;
+}
 
 .headernav{
   list-style: none;
   text-decoration: none;
-  text-align: right;
-  margin-left: 5px;
-  margin-right: 5px;
   color: white;
 }
 
 .headerlist{
-  float: right;
+ margin: 5px;
 }
 
 .rating-box .ratings .fa {
   font-size: 20px;
-  color: yellow;
+  color: #f5d63b;
   cursor: pointer;
 }
 
@@ -48,7 +63,7 @@ header{
   position: relative;
   width: 5em;
   height: 1em;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .star-rating-front {
@@ -56,7 +71,7 @@ header{
   top: 0;
   left: 0;
   overflow: hidden;
-  color: yellow;
+  color: #f5d63b;
 }
 
 .star-rating-back {
@@ -72,9 +87,85 @@ header{
 }
 
 
+#hm-icon{
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  z-index: 10;
+}
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+.menu-trigger span{
+  outline: 2px solid #f5d63b;
+}
+.menu-trigger {
+  position: relative;
+  width: 35px;
+  height: 30px;
+}
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+.menu-trigger span:nth-of-type(2) {
+  top: 13px;
+}
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+.menu-trigger.active span:nth-of-type(1) {
+  -webkit-transform: translateY(10px) rotate(-45deg);
+  transform: translateY(7px) rotate(-45deg);
+  background-color: #fff;
+}
+.menu-trigger.active span:nth-of-type(2) {
+  opacity: 0;
+}
+.menu-trigger.active span:nth-of-type(3) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg);
+  background-color: #fff;
+}
+/* ------------------------ */
+/* ------ spメニュー ------ */
+/* ------------------------ */
+#sp-menu {
+  position: fixed;
+  top: 110px;
+  right: 10px;
+  background: #817c7cb1;
+  color: #fff;
+  width: 15%;
+  min-height: 20%;
+  display: none;
+  z-index: 9;
+  padding-top: 10px;
+}
+#sp-menu li{
+  text-align: center;
+  margin-bottom: 20px;
+}
+#sp-menu a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
 
 
 
 
 
-
+.search-result-image {
+  cursor: pointer;
+}

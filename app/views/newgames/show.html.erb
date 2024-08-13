@@ -1,5 +1,5 @@
 
-<%= attachment_image_tag @newgame, :game_image, format: 'jpeg', size: "100x100" %>
+<%= attachment_image_tag @newgame, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100" %>
 <h3>title</h3>
 <%= @newgame.gametitle %>
 
@@ -7,8 +7,7 @@
 <%= @newgame.gametime %>
 <h3>clear level</h3>
 <%= @newgame.gameclear %>
-<h3>score</h3>
-<%= @newgame.gamehard %>
+
 <h3>review</h3>
 <%= simple_format @newgame.gamebody %>
 
