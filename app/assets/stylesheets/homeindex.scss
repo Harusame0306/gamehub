@@ -5,6 +5,33 @@
     color: #555;
   }
 
+  .logbox{
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .login{
+    text-decoration: none;
+    color: #555;
+  }
+  
+  .signup{
+    font-weight: bold;
+    padding: 0.5em 0.6em;
+    font-size: 20px;
+    margin-left: 45px;
+  }
+
+  .login1{
+    width: 30%;
+    font-weight: bold;
+    padding: 0.5em 0.8em;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0 auto;
+  }
+
 .body{
     display: flex;
 }
@@ -40,6 +67,8 @@
     margin-bottom: 20px;
     border-bottom: 0.5px solid  #e0e0e0;
     flex-direction: column;
+    text-align: center;
+    font-weight: bolder;
 }
 
 .games-box{
@@ -61,17 +90,36 @@
     width: 25%;
 }
 
+#games1 > div{
+    width: 20%;
+}
+
+#games1{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#game1{
+    padding: 3px;
+    margin-top: 20px;
+    border-bottom: 0.5px solid  #e0e0e0;
+    flex-direction: column;
+    text-align: center;
+    font-weight: bolder;
+}
+
 .game{
     padding: 3px;
     margin-bottom: 20px;
     border-bottom: 0.5px solid  #e0e0e0;
     flex-direction: column;
+    text-align: center;
+    font-weight: bolder;
 }
 
 .gameimage{
     border: none;
     margin: 0;
-    margin-left: 20px;
 }
 
 .users-box{
@@ -97,16 +145,17 @@
     padding: 3px;
     margin-bottom: 20px;
     border-bottom: 0.5px solid  #e0e0e0;
-    flex-direction: column;
+    font-weight: bolder;
+    text-align: center;
 }
 
 .user{
-    margin-left: 30%;
+    font-weight: lighter;
 }
 
 .userimage{
     border-radius: 50%;
-    margin: 6px;
+    padding: 5px 0;
 }
 
 .link{
@@ -143,7 +192,7 @@
 
 .comment{
     font-size: 15px;
-    margin-left: 20px;
+    padding-left: 20px;
 }
 
 .postitem small {
@@ -179,5 +228,28 @@
 
 .profileimage{
     border-radius: 50%;
+}
+
+.users1{
+    display: flex;
+    flex-wrap: wrap; /* 要素を折り返す */
+    padding: 15px;
+    border-top: 2px solid #555;
+    margin-top: 10px;
+}
+
+.useritem1{
+    display: flex;
+    padding-bottom: 19px;
+    width: 20%;
+    border-bottom: 0.5px solid  #e0e0e0;
+}
+#username{
+    text-align: center;
+    margin: 0 auto;
+    font-weight: bolder;
+}
+#username small{
+    font-weight: lighter;
 }
 

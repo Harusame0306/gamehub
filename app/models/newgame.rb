@@ -5,7 +5,6 @@ class Newgame < ApplicationRecord
 
   with_options presence: true do
     validates :gametitle
-    validates :gamebody
   end
   
 end

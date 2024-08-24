@@ -4,11 +4,26 @@
     box-sizing: border-box;
   }
 
+
 .search-box{
-    padding: 0 10%;
     margin-top: 40px;
 }
 
 .form-group{
     margin-bottom: 30px;
+}
+
+.rakutenitem{
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.rakutenitem>div{
+    margin-left: 15px;
+    font-size: smaller;
+}
+
+.introduction{
+    padding-top: 30px;
+    padding-left: 10px;
 }

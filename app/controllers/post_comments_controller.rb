@@ -10,7 +10,14 @@ class PostCommentsController < ApplicationController
   end
 
   def destroy
-    PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
+    Rails.logger.debug "params: #{params.inspect}"
+    post_comment = PostComment.find_by(id: params[:id], post_id: params[:post_id])
+    if post_comment
+      post_comment.destroy
+      flash[:notice] = "コメントが削除されました。"
+    else
+      flash[:alert] = "コメントが見つかりませんでした。"
+    end
     redirect_to post_path(params[:post_id])
   end
 

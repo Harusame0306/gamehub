@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_12_111936) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_21_220239) do
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
     t.string "gametitle"
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_111936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "star"
+    t.string "gameurl"
   end
 
   create_table "newgames", force: :cascade do |t|
@@ -34,6 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_12_111936) do
     t.string "game_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gameurl"
   end
 
   create_table "post_comments", force: :cascade do |t|

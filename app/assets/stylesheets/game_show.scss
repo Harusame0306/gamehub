@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #555;
+  }
+#body{
+    display: flex;
+}
+#box1{
+    width: 70%;
+}
+#box2{
+    width: 30%;
+    padding: 30px;
+    margin-top: 40px;
+}
+#top{
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+#main{
+    display: flex;
+    margin: 0 60px;
+}
+#top h2{
+    margin-left: 20px
+}
+.image{
+    border-radius: 3px;
+}
+#gamebox{
+    margin: 25px 50px;
+}
+.star-rating-front{
+    margin-left: 6px;
+}
+.link{
+    text-decoration: none;
+    color: #555;
+}
+#postuser{
+    display: flex;
+    margin-bottom: 25px;
+}
+
+#postuser span{
+    height: 100%;
+    margin-right: 5px;
+}
+.profileimage{
+    border-radius: 50%;
+}
+
+#icon{
+    margin-left: 30%;
+}
+
+#icon2{
+    margin-left: 10px;
+}
+#pastitems{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.pastitem{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+#more{
+    margin-left: 70%;
+}

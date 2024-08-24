@@ -1,11 +1,28 @@
-<h1>All users</h1>
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "menu.js" %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'homeindex' %>
+<% end %>
 
-<% @users.each do |user| %>
-<div>
-<%= link_to user_path(user) do %><%= user.username %><% end %>
-<%= link_to user_path(user) do %>
-  <%= attachment_image_tag user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "100x100" %>
-<% end %>
-<small>post games<%= user.games.count %></small>
+<div class="users-box">
+    <h2>New users</h2>
+    <div class="users1">
+    <% if @users.present? %>
+      <% @users.each do |user| %>
+        <div class="useritem1">
+          <%= link_to user_path(user), class:"link" do %>
+          <div class="userimage">
+          <%= attachment_image_tag user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "90x90", class:"profileimage" %>
+          </div>
+          <div id="username">
+          <span><%= user.username %></span><br>
+          <small>@<%= user.usernumber %></small>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <span>Not follow</span>   
+    <% end %>
+    </div>
 </div>
-<% end %>

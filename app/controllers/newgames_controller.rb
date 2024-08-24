@@ -1,7 +1,8 @@
 class NewgamesController < ApplicationController
 
   before_action :authenticate_user!, except: [:index]
-
+  require 'rakuten_web_service'
+  
   def index
     @newgames = Newgame.all.order(created_at: :desc)
   end
@@ -12,8 +13,12 @@ class NewgamesController < ApplicationController
 
   def new
     @newgame = Newgame.new
+    if params[:keyword]
+      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
+    end
+    @newgame.gameurl = params[:gameurl] # ここで@newgameに設定
   end
-
+  
   def create
     @newgame = Newgame.new(newgame_params)
     @newgame.user_id = current_user.id
@@ -22,7 +27,7 @@ class NewgamesController < ApplicationController
     else
       render :new
     end
-  end
+  end  
 
   def edit
     @user = current_user
@@ -49,6 +54,6 @@ class NewgamesController < ApplicationController
   private
 
   def newgame_params
-    params.require(:newgame).permit(:gametitle, :gamebody, :game_image, :game_image_id, :gamehard, :gametime, :gameclear)
+    params.require(:newgame).permit(:gametitle, :gamebody, :game_image, :gameurl, :gamehard, :gametime, :gameclear)
   end
 end

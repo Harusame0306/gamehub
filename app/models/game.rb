@@ -4,8 +4,6 @@ class Game < ApplicationRecord
 
   with_options presence: true do
     validates :gametitle
-    validates :gamebody
-    validates :gamehard
   end
 
   def game_gamehard_percentage

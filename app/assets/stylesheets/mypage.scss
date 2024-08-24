@@ -2,29 +2,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #555;
   }
 
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-    }
-
 .mytop{
-    width: 55%;
+    display: flex;
+    width: 60%;
     float: left;
     margin: 50px 50px;
     margin-right: 30px;
     color: #555;
 }
     
-.usertop{
-    float: left;
-}
-
 .profileimage-box{
     margin-right: 35px;
-    float: left;
 }
 
 .follower{
@@ -72,7 +63,9 @@
 }
 
 .profile{
-    margin: 30px 10px;
+    font-size: 14px;
+    margin: 30px 5px;
+    padding: 0 25px;
 }
 
 .games{
@@ -96,21 +89,22 @@
 
 .now{
     margin-left: 15px;
+    font-size: 19px;
 }
 
 .post{
     position: relative;
     display: inline-block;
     margin: 1.5em 0 1.5em 15px;
-    padding: 7px 10px;
+    padding: 5px 10px;
     min-width: 150px;
     max-width: 30%;
     color: #555;
     font-size: 16px;
     background: white;
-    border: solid 3px #646464;
+    border: solid 3px #8d8c8c;
     box-sizing: border-box;
-    border-radius: 3px;
+    border-radius: 10px;
     margin-top: 50px;
 }
   
@@ -132,7 +126,7 @@
     left: -30px;
     margin-top: -14px;
     border: 14px solid transparent;
-    border-right: 14px solid #555;
+    border-right: 14px solid #8d8c8c;
     z-index: 1;
 }
   
@@ -153,8 +147,7 @@
    text-align: center;
 }
 
-.postbody span{
-    margin-top: 5px;
+#span{
    margin-left: 80%;
 }
 
@@ -205,24 +198,34 @@ main{
 
 .pastimagebox{
     float:left;
+    border: none;
 }
 .pastitem{
    float: left;
-   margin-top: 10px;
-   margin-left: 10px;
    width: 23%;
+   border-bottom: 1px solid #c0c0c0;
+   padding: 15px;
 }
 
 .newitem{
-    float: left;
-    margin-top: 10px;
-    margin-left: 10px;
+    padding-top: 8px;
+    display: flex;
     width: 95%;
     border-bottom: 1px solid #c0c0c0;
+    margin-top: 5px;
 }
 
 .pasttitle{
-    margin: 10px;
-    float:left
+    color: #555;
+    padding-left: 15px;
+    font-weight: bolder;
 }
 
+.pastitem small{
+    font-weight: bolder;
+}
+.pasttitle span{
+    padding-left: 10px;
+    font-size: smaller;
+    font-weight: lighter;
+}

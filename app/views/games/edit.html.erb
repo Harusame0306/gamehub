@@ -1,39 +1,59 @@
-<h1>Edit</h1>
-
-<%= form_with model: @game do |f| %>
-    <%= f.label :image %>
-    <%= f.file_field :game_image, accept: "image/jpeg" %>
-
-    <%= f.label :title %>
-    <%= f.text_field :gametitle %>
-
-    <%= f.label :score %>
-    <%= f.hidden_field :gamehard, id: "rating-value" %>
-    <div class="main-rating">
-      <div class="ratings mb-3">
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-        <span class="fa fa-star-o" id="star"></span>
-      </div>
-      <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
-    </div>
-
-    <%= f.label :time %>
-    <%= f.text_field :gametime %>
-
-    <%= f.label :clear %>
-    <%= f.text_area :gameclear %>
-
-    <%= f.label :review %>
-    <%= f.text_area :gamebody %>
-
-    <%= f.submit "update" %>
-<% end %>
-
+<%= javascript_include_tag "jquery.js" %>
 <%= javascript_include_tag 'star.js' %>
-
+<%= javascript_include_tag "menu.js" %>
 <% content_for :css do %>
-  <%= stylesheet_link_tag 'star' %>
+  <%= stylesheet_link_tag 'game_new' %>
 <% end %>
+
+<% if @game.errors.any? %>
+    <h5><%= pluralize(@game.errors.count, "error") %>エラーがあります。必須を埋めてください。</h5>
+    <ul>
+        <% @game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<div class="textform">
+
+  <%= form_with model: @game, local: true, id: 'review_form' do |f| %>
+
+  <% if @game.gameurl.present? %>
+    <%= image_tag @game.gameurl, size: "100x100", alt: "Game Image" %><br><br>
+  <% else %>
+    <%= attachment_image_tag @game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"pastimage" %><br>
+    <%= f.file_field :game_image, accept: "image/jpeg" %><br><br>
+  <% end %>
+    
+    <%= f.label :タイトル %><br>
+    <%= f.text_field :gametitle, style: "width: 70%; height: 28px;" %><br>
+    <br>
+    <%= f.label :プレイ時間 %><br>
+    <%= f.text_field :gametime, style: "width: 70%; height: 28px;" %><br>
+    <br>
+    <%= f.label :評価 %><br>
+    <%= f.hidden_field :gamehard, id: "rating-value" %>
+      <div class="main-rating">
+        <div class="ratings mb-3">
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+        </div>
+        <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+      </div>
+    <br>
+    <%= f.label :到達度 %><br>
+    <%= f.text_area :gameclear, style: "width: 70%; height: 50px;" %><br>
+    <br>
+    <%= f.label :レビュー %><br>
+    <%= f.text_area :gamebody, style: "width: 70%; height: 50px;" %><br>
+    <br>
+    <span ID="update"><%= f.submit 'Update', class: "form-control btn btn-success" %></span>
+    <span>
+    <%= link_to game_path(@game), data: { turbo_method: :delete} do %>
+    <i class="fa-solid fa-trash fa-lg" style="color: #555;"></i><% end %>
+    </span>
+    <% end %>
+

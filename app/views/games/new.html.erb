@@ -1,32 +1,53 @@
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag 'star.js' %>
+<%= javascript_include_tag "menu.js" %>
+<%= javascript_include_tag "search.js" %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'game_new' %>
+<% end %>
+
 
 <% if @game.errors.any? %>
-    <h2><%= pluralize(@game.errors.count, "error") %>エラーがあります。必須を埋めてください。</h2>
+    <h5><%= pluralize(@game.errors.count, "error") %>エラーがあります。必須を埋めてください。</h5>
     <ul>
-        <% @game.error.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
+      <% @game.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
     </ul>
 <% end %>
 
+<div class="main">
 
 <div class="textform">
+  <h2>Played game</h2>
+  <div class="postform">
+  <%= form_with model: @game, local: true, id: 'review_form' do |f| %>
+  <%= f.label :パッケージ画像, class:"label" %><br>
+  <%= f.hidden_field :gameurl, id: "hidden_gameurl", value: @game.gameurl %>
+      
+  <% if @game.gameurl.present? %>
+    <%= image_tag @game.gameurl, id: 'displayed-image', class: 'displayed-image' %><br>
+  <% else %>
+    <%= image_tag '', id: 'displayed-image', class: 'displayed-image', style: 'display:none;' %>
+  <% end %>
 
-<%= form_with model: @game, local: true, id: 'review_form' do |f| %>
+  <div class="imagesearch">
+    <%= link_to "画像を検索する", '#', id: 'search-link' %>
+    <div id="attachment-field">
+    <%= f.file_field :game_image, accept: "image/jpeg" %>
+    </div>
+  </div><br>
 
-<% if params[:image_id].present? %>
-  <%= image_tag params[:image_id], class: 'displayed-image' %>
-<% end %>
-
-    <%= f.label :image %>
-    <%= f.hidden_field :game_image_id, id: "hidden_image_id", value: params[:image_id] %><br>
+    <%= f.label :ゲームタイトル, class:"label" %><br>
+    <%= f.text_field :gametitle, placeholder: "必須", style: "width: 70%; height: 28px;" %><br>
     <br>
-    <%= f.label :title %>
-    <%= f.text_field :gametitle %><br>
+    <%= f.label :クリア時間, class:"label" %><br>
+    <%= f.text_field :gametime, placeholder: "〇時間、〇ヵ月etc", style: "width: 70%; height: 28px;" %><br>
     <br>
-    <%= f.label :time %>
-    <%= f.text_field :gametime %><br>
+    <%= f.label :達成レベル, class:"label" %><br>
+    <%= f.text_area :gameclear, placeholder: "ランク帯、トロフィー数、解放度etc", style: "width: 70%; height: 50px;" %><br>
     <br>
-    <%= f.label :score %>
+    <%= f.label :評価, class:"label" %><br>
     <%= f.hidden_field :gamehard, id: "rating-value" %>
       <div class="main-rating">
         <div class="ratings mb-3">
@@ -39,22 +60,17 @@
         <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
       </div>
     <br>
-    <%= f.label :clear %>
-    <%= f.text_area :gameclear %><br>
+    <%= f.label :レビュー, class:"label" %><br>
+    <%= f.text_area :gamebody, style: "width: 70%; height: 80px;" %><br>
     <br>
-    <%= f.label :review %>
-    <%= f.text_area :gamebody %><br>
-    <br>
-    <%= f.submit 'Save', class: "form-control btn btn-success" %>
-<% end %>
-
-
+    <span class="button"><%= f.submit 'Save', class: "form-control btn btn-success" %></span>
+  <% end %>
+  </div>
 </div>
 
+<div id="search-results-modal" style="display:none;">
+  <div id="search-results"></div>
+  <button id="close-modal">Close</button>
+</div>
 
-<%= javascript_include_tag 'star.js' %>
-<%= javascript_include_tag "jquery.js" %>
-
-<% content_for :css do %>
-  <%= stylesheet_link_tag 'star' %>
-<% end %>
+</div>

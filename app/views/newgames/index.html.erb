@@ -1,16 +1,25 @@
-<h1>AllGames</h1>
-
-<% @newgames.each do |newgame| %>
-<div>
-    <%= link_to newgame_path(newgame) do %>
-    <%= attachment_image_tag newgame, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100" %>
-    <% end %>
-    <%= link_to newgame_path(newgame) do %><%= newgame.gametitle %><% end %>
-    <%= link_to user_path(newgame.user.id) do %><%= newgame.user.username %><% end %>
-    <small><%= newgame.created_at %></small>
-</div>
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag 'star.js' %>
+<%= javascript_include_tag "menu.js" %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'homeindex' %>
 <% end %>
 
 
-<%= javascript_include_tag "menu.js" %>
-<%= javascript_include_tag "jquery.js" %>
+<div class="games-box">
+    <h2>Game reviews</h2>
+    <div id="games1">
+    <% @newgames.each do |newgame| %>
+      <div id="game1">
+        <%= link_to newgame_path(newgame), class:"link" do %><%= truncate(newgame.gametitle, length: 8, omission: '…') %><% end %><br>
+        <% if newgame.gameurl.present? %>
+        <%= link_to newgame_path(newgame) do %><%= image_tag newgame.gameurl, size: "100x100", alt: "Game Image", class:"gameimage" %><% end %><br>
+        <% else %>
+        <%= link_to newgame_path(newgame) do %>
+        <%= attachment_image_tag newgame, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"gameimage" %><% end %><br>
+        <% end %>
+        <%= link_to user_path(newgame.user.id), class:"link" do %><small class="user">user: <%= truncate(newgame.user.username, length: 6, omission: '…') %></small><% end %>
+      </div>
+    <% end %>
+    </div>
+</div>

@@ -19,6 +19,7 @@ class User < ApplicationRecord
   
 
   attachment :profile_image
+  attachment :game_image
 
   with_options presence: true do
     validates :username

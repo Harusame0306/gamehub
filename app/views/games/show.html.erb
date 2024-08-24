@@ -1,41 +1,74 @@
-
-<% if @game.game_image_id.present? %>
-  <%= image_tag @game.game_image_id, size: "100x100", alt: "Game Image" %>
-<% else %>
-  <%= attachment_image_tag @game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"pastimage" %>
-<% end %>
-
-<h3>title</h3>
-<%= @game.gametitle %>
-
-<h3>cleartime</h3>
-<%= @game.gametime %>
-<h3>clear level</h3>
-<%= @game.gameclear %>
-
-<h3>score</h3>
-<div class="star-rating mb-2">
-    <div class="star-rating-front" style="width: <%= @game.game_gamehard_percentage %>%">★★★★★</div>
-    <div class="star-rating-back">★★★★★</div>
-</div>
-
-<h3>review</h3>
-<%= simple_format @game.gamebody %>
-
-
-<% if @game.user.id == current_user.id %>
-    <%= link_to "Edit", edit_game_path(@game) %>
-    <%= link_to "Delete", game_path(@game), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %>
-<% end %>
-
-<small>
-    <%= link_to user_path(@game.user.id) do %>By_<%= @game.user.username %><% end %>
-</small>
-
-
-<%= javascript_include_tag "menu.js" %>
 <%= javascript_include_tag "jquery.js" %>
 <%= javascript_include_tag 'star.js' %>
+<%= javascript_include_tag "menu.js" %>
 <% content_for :css do %>
-  <%= stylesheet_link_tag 'star' %>
+  <%= stylesheet_link_tag 'game_show' %>
 <% end %>
+
+<div id="body">
+
+<div id="box1">
+
+<div id="top">
+  <div id="postuser">
+    <%= link_to user_path(@game.user.id), class:"link" do %>
+    <span><%= attachment_image_tag @game.user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "40x40", class:"profileimage" %></span>
+    <span><%= @game.user.username %></span>
+    <% end %>
+  </div>
+  <h2><%= @game.gametitle %></h2>
+</div>
+<div id="main">
+<div class="gameimage">
+  <% if @game.gameurl.present? %>
+    <%= image_tag @game.gameurl, size: "200x200", alt: "Game Image", class:"image" %>
+  <% else %>
+    <%= attachment_image_tag @game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "200x200", class:"image" %>
+  <% end %>
+</div>
+<div id="gamebox">
+  <span>プレイ時間 ：<%= @game.gametime %></span><br>
+  <br>
+  <span>達成度：<%= @game.gameclear %></span><br>
+  <br>
+  <span>評価：<span class="star-rating mb-2">
+  <span class="star-rating-front" style="width: <%= @game.game_gamehard_percentage %>%">★★★★★</span>
+  <span class="star-rating-back">★★★★★</span></span></span><br>
+  <br>
+  <span><%= simple_format @game.gamebody %></span>
+  <br>
+  <% if @game.user.id == current_user.id %>
+    <span id="icon"><%= link_to edit_game_path(@game), class:"link" do %><span id="icon"><i class="fa-regular fa-pen-to-square fa-lg" style="color: #555;"></i><% end %>
+    <span id="icon2"><%= link_to game_path(@game), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？"}, class:"link" do %>
+    <i class="fa-solid fa-trash fa-lg" style="color: #555;"></i><% end %></span></span>
+  <% end %>
+</div>
+</div>
+
+</div>
+
+<div id="box2">
+  <span>このユーザの他の投稿</span>
+  <div id="pastitems">
+    <% @game.user.games.first(6).each do |game| %>
+    <div class="pastitem">
+    <% if game.gameurl.present? %>
+      <%= link_to game_path(game) do %>
+      <%= image_tag game.gameurl, size: "110x110", alt: "Game Image" %>
+      <% end %><br>
+    <% else %>
+      <%= link_to game_path(game) do %>
+      <%= attachment_image_tag game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "110x110", class: "pastimage" %>
+      <% end %><br>
+    <% end %>
+    <small><%= truncate(game.gametitle, length: 8, omission: '…') %></small>
+    <div class="star-rating mb-2">
+    <div class="star-rating-front" style="width: <%= game.game_gamehard_percentage %>%">★★★★★</div>
+    </div>
+    </div>
+    <% end %>
+  </div>
+  <span id="more"><%= link_to user_path(@game.user.id), class:"link" do %>more ><% end %></span>
+</div>
+
+</div>

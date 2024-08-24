@@ -1,11 +1,16 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'homeindex' %>
+<% end %>
+<%= javascript_include_tag "menu.js" %>
+<%= javascript_include_tag "jquery.js" %>
 
 
 <% unless user_signed_in? %>
-    <nav>
-      <ul class="login1"><i class="fa-solid fa-user-check fa-xl" style="color: #787d7d;"></i><%= link_to " Log-in", new_user_session_path, class:"login" %></ul>
-      <ul class="signup"><i class="fa-solid fa-user-plus fa-xl" style="color: #787d7d;"></i><%= link_to " Sign-up", new_user_registration_path, class:"login" %></ul>
-    </nav>
-<% end %>
+<div class="logbox">
+  <span class="login1"><i class="fa-solid fa-user-check fa-lg" style="color: #555;"></i><%= link_to " Log-in", new_user_session_path, class:"login" %>    
+  <span class="signup"><i class="fa-solid fa-user-plus fa-lg" style="color: #555;"></i><%= link_to " Sign-up", new_user_registration_path, class:"login" %></span></span>
+</div>
+  <% end %>
 
 <div class="body">
 
@@ -16,11 +21,21 @@
       <div class="newgames">
       <% @newgames.each do |newgame| %>
         <div class="newgame">
-          <%= link_to newgame_path(newgame), class:"link" do %><%= newgame.gametitle %><% end %><br>
-          <%= link_to newgame_path(newgame) do %>
-          <%= attachment_image_tag newgame, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"gameimage" %>
+          <%= link_to newgame_path(newgame), class:"link" do %>
+            <%= truncate(newgame.gametitle, length: 8, omission: '…') %>
           <% end %><br>
-          <%= link_to user_path(newgame.user.id), class:"link" do %><small class="user">user: <%= newgame.user.username %></small><% end %>
+
+          <% if newgame.gameurl.present? %>
+            <%= link_to newgame_path(newgame) do %>
+              <%= image_tag newgame.gameurl, size: "100x100", alt: "Game Image", class:"gameimage" %>
+            <% end %><br>
+          <% else %>
+            <%= link_to newgame_path(newgame) do %>
+              <%= attachment_image_tag newgame, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"gameimage" %>
+            <% end %><br>
+          <% end %>
+
+          <%= link_to user_path(newgame.user.id), class:"link" do %><small class="user">user: <%= truncate(newgame.user.username, length: 6, omission: '…') %></small><% end %>
         </div>
       <% end %>
       </div>
@@ -32,10 +47,19 @@
       <div class="games">
       <% @games.each do |game| %>
         <div class="game">
-          <%= link_to game_path(game), class:"link" do %><%= game.gametitle %><% end %><br>
-          <%= link_to game_path(game) do %>
-          <%= attachment_image_tag game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"gameimage" %>
+          <%= link_to game_path(game), class:"link" do %>
+            <%= truncate(game.gametitle, length: 8, omission: '…') %>
           <% end %><br>
+          
+          <% if game.gameurl.present? %>
+            <%= link_to game_path(game) do %>
+              <%= image_tag game.gameurl, size: "100x100", alt: "Game Image", class:"gameimage" %>
+            <% end %><br>
+          <% else %>
+            <%= link_to game_path(game) do %>
+              <%= attachment_image_tag game, :game_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"gameimage" %>
+            <% end %><br>
+          <% end %>
           <%= link_to user_path(game.user.id), class:"link" do %><small class="user">user: <%= game.user.username %></small><% end %>
         </div>
       <% end %>
@@ -50,7 +74,7 @@
       <div class="useritem">
         <%= link_to user_path(user), class:"link" do %><%= user.username %><% end %><br>
         <%= link_to user_path(user) do %>
-        <%= attachment_image_tag user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"userimage" %>
+          <%= attachment_image_tag user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "100x100", class:"userimage" %>
         <% end %>
       </div>
     <% end %>
@@ -65,10 +89,11 @@
     <div class="posts">
       <% @posts.each do |post| %>
         <div class="postitem">
+          <%= link_to user_path(post.user.id), class:"link" do %>
           <div class="postuser">
           <span><%= attachment_image_tag post.user, :profile_image, fallback: "no-image.png", format: 'jpeg', size: "40x40", class:"profileimage" %></span>
           <span><%= post.user.username %></span>
-          </div>
+          </div><% end %>
           <a><%= link_to post_path(post), class:"link" do %><%= post.body %><% end %></a><br>
           <% if post.game_image.present? %>
           <%= link_to post_path(post), class:"link" do %><%= attachment_image_tag post, :game_image, format: 'jpeg', size: "100x100", class:"postimage" %><% end %><br>
@@ -83,8 +108,3 @@
   
   </div>
   
-  <%= javascript_include_tag "menu.js" %>
-  <%= javascript_include_tag "jquery.js" %>
-  <% content_for :css do %>
-    <%= stylesheet_link_tag 'homeindex' %>
-  <% end %>

@@ -1,3 +1,5 @@
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "menu.js" %>
 <% content_for :css do %>
   <%= stylesheet_link_tag 'mypage_edit' %>
 <% end %>
@@ -35,7 +37,7 @@
 
   <div class="field">
     <%= f.label :"X" %><br />
-    <%= f.text_area :twitter, placeholder:"URLを入力してください" %>
+    <%= f.text_area :twitter, placeholder:"URLやユーザー名" %>
   </div>
 
   <div class="field">
@@ -45,17 +47,17 @@
 
   <div class="field">
     <%= f.label :"youtube" %><br />
-    <%= f.text_area :youtube, placeholder:"URLを入力してください" %>
+    <%= f.text_area :youtube, placeholder:"URLやチャンネル名" %>
   </div>
 
   <div class="field">
     <%= f.label :"twitch" %><br />
-    <%= f.text_area :twitch, placeholder:"URLを入力してください" %>
+    <%= f.text_area :twitch, placeholder:"URLやチャンネル名" %>
   </div>
 
   <div class="field">
     <%= f.label :"other" %><br />
-    <%= f.text_area :sns, placeholder:"URLを入力してください" %>
+    <%= f.text_area :sns, placeholder:"その他のURL" %>
   </div>
   
   

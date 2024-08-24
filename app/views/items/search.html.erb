@@ -1,20 +1,19 @@
 <div class="search-box">
-  <%= form_with url: search_items_path, method: :get, local: true do |f| %>
-    <div class="form-group">
-      <%= f.text_field :keyword, class: "form-control" %>
-      <%= f.submit 'Search', class: "form-control btn btn-success" %>
+
+<% if @items.present? %>
+  <% @items.each do |item| %>
+  <div class="rakutenitem">
+    <div>
+    <%= link_to search_items_path(gameurl: item['mediumImageUrls'].first), id: item['mediumImageUrls'].first, class: 'search-link', data: { gameurl: item['mediumImageUrls'].first } do %>
+    <%= image_tag item['mediumImageUrls'].first, class: 'search-result-image' %>
+    <% end %></div>
+    <div class="introduction">
+    <%= truncate(item['itemName'], length: 25, omission: '…') %><br>
     </div>
+  </div>
   <% end %>
-  <% if @items.present? %>
-    <% @items.each do |item| %>
-      <%= link_to new_game_path(image_id: item['mediumImageUrls'].first), id: item['mediumImageUrls'].first, class: 'search-link', data: { image_id: item['mediumImageUrls'].first } do %>
-        <%= image_tag item['mediumImageUrls'].first, class: 'search-result-image' %>
-      <% end %>
-      <br>
-      <%= item['itemName'] %><br>
-      <br>
-    <% end %>
-  <% end %>
+<% end %>
+
 </div>
 
 
