@@ -127,6 +127,10 @@ GEM
       responders
       warden (~> 1.2.3)
     domain_name (0.6.20240107)
+    dotenv (3.1.2)
+    dotenv-rails (3.1.2)
+      dotenv (= 3.1.2)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     execjs (2.9.1)
@@ -199,6 +203,7 @@ GEM
     mustermann (1.1.2)
       ruby2_keywords (~> 0.0.1)
     mutex_m (0.2.0)
+    mysql2 (0.5.6)
     net-imap (0.4.14)
       date
       net-protocol
@@ -388,12 +393,14 @@ DEPENDENCIES
   capybara
   debug
   devise
+  dotenv-rails
   ffi
   importmap-rails
   jbuilder
   jquery-rails
   kaminari
   mini_racer
+  mysql2
   puma (>= 5.0)
   rails (~> 7.1.3, >= 7.1.3.4)
   rakuten_web_service

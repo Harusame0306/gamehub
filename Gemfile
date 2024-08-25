@@ -80,3 +80,8 @@ gem 'sassc-rails'
 gem 'mini_racer', platforms: :ruby
 gem 'kaminari'
 gem 'rakuten_web_service'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
