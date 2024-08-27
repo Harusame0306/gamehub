@@ -46,5 +46,10 @@ if Rails.env.production?
     true
   )
   # デーモン
+<<<<<<< HEAD
   #daemonize
 end
+=======
+  # daemonize
+end
+>>>>>>> 75442b38f5071f5760e3507bdd656522fd3e3d3d
