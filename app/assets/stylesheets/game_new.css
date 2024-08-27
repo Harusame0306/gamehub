@@ -5,46 +5,49 @@
   color: #555;
 }
 
-.main{
+.main {
   display: flex;
 }
 
-.postform{
+.postform {
   padding: 10px 30px;
 }
 
-.textform{
+.textform {
   width: 65%;
   margin: 30px;
   padding-left: 10%;
   padding-top: 10px;
 }
 
-.textform h2{
+.textform h2 {
   margin-bottom: 30px;
   border-bottom: 1.5px solid #555;
 }
-.button{
+
+.button {
   margin-left: 30%;
 }
 
-.form-control{
+.form-control {
   font-size: 15px;
   padding: 3px;
 }
-#search-results-modal{
+
+#search-results-modal {
   width: 35%;
   padding-right: 5%;
 }
 
-#attachment-field{
+#attachment-field {
   margin-top: 6px;
 }
 
-.label{
+.label {
   font-size: 16px;
 }
-#search-link{
+
+#search-link {
   border: 1px solid #555;
   border-radius: 3px;
   text-decoration: none;
@@ -56,19 +59,19 @@
   background-color: rgb(237, 237, 237);
 }
 
-.imagesearch{
+.imagesearch {
   margin-top: 5px;
 }
 
-#search-results header{
+#search-results header {
   display: none;
 }
 
-#search-results-modal{
+#search-results-modal {
   display: none;
 }
 
-#update{
+#update {
   margin-left: 20%;
   margin-right: 100px;
-}
+}/*# sourceMappingURL=game_new.css.map */

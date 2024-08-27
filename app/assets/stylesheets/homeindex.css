@@ -1,0 +1,254 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #555;
+}
+
+.logbox {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.login {
+  text-decoration: none;
+  color: #555;
+}
+
+.signup {
+  font-weight: bold;
+  padding: 0.5em 0.6em;
+  font-size: 20px;
+  margin-left: 45px;
+}
+
+.login1 {
+  width: 30%;
+  font-weight: bold;
+  padding: 0.5em 0.8em;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 0 auto;
+}
+
+.body {
+  display: flex;
+}
+
+.allgames-box {
+  display: left;
+  margin-right: 3%;
+  width: 65%;
+}
+
+.newgames-box {
+  margin: 40px;
+  margin-top: 50px;
+  width: 90%;
+}
+
+.newgames {
+  display: flex;
+  flex-wrap: wrap; /* 要素を折り返す */
+  padding: 30px;
+  padding-bottom: 0;
+  border-top: 2px solid #555;
+  margin-top: 10px;
+}
+
+.newgames > div {
+  width: 25%;
+}
+
+.newgame {
+  padding: 3px;
+  margin-bottom: 20px;
+  border-bottom: 0.5px solid #e0e0e0;
+  flex-direction: column;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.games-box {
+  margin: 40px;
+  margin-top: 50px;
+  width: 90%;
+}
+
+.games {
+  display: flex;
+  flex-wrap: wrap; /* 要素を折り返す */
+  padding: 30px;
+  padding-bottom: 0;
+  border-top: 2px solid #555;
+  margin-top: 10px;
+}
+
+.games > div {
+  width: 25%;
+}
+
+#games1 > div {
+  width: 20%;
+}
+
+#games1 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#game1 {
+  padding: 3px;
+  margin-top: 20px;
+  border-bottom: 0.5px solid #e0e0e0;
+  flex-direction: column;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.game {
+  padding: 3px;
+  margin-bottom: 20px;
+  border-bottom: 0.5px solid #e0e0e0;
+  flex-direction: column;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.gameimage {
+  border: none;
+  margin: 0;
+}
+
+.users-box {
+  margin: 40px;
+  margin-top: 50px;
+  width: 90%;
+}
+
+.users {
+  display: flex;
+  flex-wrap: wrap; /* 要素を折り返す */
+  padding: 30px;
+  padding-bottom: 0;
+  border-top: 2px solid #555;
+  margin-top: 10px;
+}
+
+.users > div {
+  width: 25%;
+}
+
+.useritem {
+  padding: 3px;
+  margin-bottom: 20px;
+  border-bottom: 0.5px solid #e0e0e0;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.user {
+  font-weight: lighter;
+}
+
+.userimage {
+  border-radius: 50%;
+  padding: 5px 0;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.more {
+  margin-left: 85%;
+  font-weight: bold;
+}
+
+.posts-box {
+  display: right;
+  width: 30%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.posts {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-top: 2px solid #555;
+}
+
+.postitem {
+  outline: 1px solid #555;
+  border-radius: 5%;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* 子要素を縦に並べる */
+}
+
+.comment {
+  font-size: 15px;
+  padding-left: 20px;
+}
+
+.postitem small {
+  font-size: xx-small;
+  margin-left: 35%;
+}
+
+.posts-box .more {
+  margin-left: 70%;
+  font-weight: bold;
+}
+
+.postitem a {
+  text-align: center;
+}
+
+.postimage {
+  margin: 0 auto;
+}
+
+.postuser {
+  display: flex;
+  align-items: center;
+}
+
+.postuser span {
+  display: block; /* ブロックレベル要素に変更 */
+  height: 100%;
+  margin-right: 25px;
+  font-weight: bold;
+}
+
+.profileimage {
+  border-radius: 50%;
+}
+
+.users1 {
+  display: flex;
+  flex-wrap: wrap; /* 要素を折り返す */
+  padding: 15px;
+  border-top: 2px solid #555;
+  margin-top: 10px;
+}
+
+.useritem1 {
+  display: flex;
+  padding-bottom: 19px;
+  width: 20%;
+  border-bottom: 0.5px solid #e0e0e0;
+}
+
+#username {
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bolder;
+}
+
+#username small {
+  font-weight: lighter;
+}/*# sourceMappingURL=homeindex.css.map */

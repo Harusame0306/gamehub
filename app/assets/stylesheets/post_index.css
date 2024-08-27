@@ -1,0 +1,69 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.posts-box {
+  display: right;
+  margin: 50px auto;
+  width: 45%;
+}
+
+.posts {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.postitem {
+  outline: 1px solid #555;
+  border-radius: 5%;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* 子要素を縦に並べる */
+}
+
+.postbody {
+  margin: 15px;
+  text-decoration: none;
+  color: #555;
+}
+
+.comment {
+  text-align: right;
+}
+
+.comment span {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.postimage {
+  margin-left: 5%;
+}
+
+.postuser {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.postuser span {
+  display: block; /* ブロックレベル要素に変更 */
+  height: 100%;
+  margin-right: 25px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.profileimage {
+  border-radius: 50%;
+}
+
+.link {
+  text-decoration: none;
+  color: #555;
+}/*# sourceMappingURL=post_index.css.map */

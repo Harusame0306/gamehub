@@ -1,0 +1,109 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+}
+
+.postbox {
+  width: 60%;
+  margin-top: 30px;
+}
+
+.postitem {
+  margin-left: 30px;
+  width: 90%;
+  border: 1px solid #555;
+  border-radius: 3%;
+  padding: 25px;
+}
+
+.postimage {
+  border: none;
+}
+
+.profileimage {
+  border-radius: 50%;
+}
+
+.postuser {
+  display: flex;
+  align-items: center;
+}
+
+.postuser span {
+  display: block; /* ブロックレベル要素に変更 */
+  height: 100%;
+  margin-right: 40px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.postbody {
+  margin-top: 15px;
+  margin-left: 15%;
+  font-size: 18px;
+}
+
+.postbody .td {
+  margin-left: 20%;
+}
+
+.icon {
+  margin-left: 58%;
+}
+
+.at {
+  font-size: small;
+  text-align: right;
+  margin-left: 20px;
+}
+
+.comment-box {
+  display: flex;
+  margin-left: 10%;
+  width: 60%;
+}
+
+.commentform {
+  padding-left: 30%;
+  width: 80%;
+  margin-top: 30px;
+}
+
+.comments {
+  width: 37%;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+#commentuser {
+  font-size: 17px;
+  font-weight: bolder;
+}
+
+.comment {
+  padding: 10px;
+  border: 1px solid #555;
+  margin-bottom: 10px;
+  border-radius: 3%;
+}
+
+.commentbody {
+  margin-top: 5px;
+  margin-left: 15%;
+  font-size: 15px;
+}
+
+.comment .icon {
+  font-size: small;
+}
+
+.link {
+  text-decoration: none;
+  color: #555;
+}/*# sourceMappingURL=post_show.css.map */

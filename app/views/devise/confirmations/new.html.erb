@@ -1,16 +1,22 @@
-<h2>Resend confirmation instructions</h2>
+<%= javascript_include_tag "menu.js" %>
+<%= javascript_include_tag "jquery.js" %>
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'game_new' %>
+<% end %>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<div class="textform">
+<h2></h2>
+<div class="postform">
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+    <br><br>
+    <span class="button"><%= f.submit "Resend confirmation instructions" %></span>
   </div>
 <% end %>
+</div>
+</div>
 
 <%= render "devise/shared/links" %>
