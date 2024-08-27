@@ -9,6 +9,12 @@ set :rbenv_ruby, '3.2.4'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public", "tmp"
 
+set :ssh_options, {
+  keys: %w(/c/Users/gotoharuka/Desktop/vagrant/centos7/practice-aws.pem),
+  forward_agent: true,
+  auth_methods: %w(publickey)
+}
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

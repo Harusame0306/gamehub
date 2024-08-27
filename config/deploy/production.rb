@@ -60,4 +60,8 @@
 #     # password: "please use keys"
 #   }
 
-server '3.112.32.31', user: 'ec2-user', roles: %w{app web db}
+server '3.112.32.31', user: 'ec2-user', roles: %w{app db web}, ssh_options: {
+  keys: %w(/c/Users/gotoharuka/Desktop/vagrant/centos7/practice-aws.pem),
+  forward_agent: false,
+  auth_methods: %w(publickey)
+}
