@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('#search-link').on('click', function(event) {
     event.preventDefault();
-    const keyword = prompt('検索ワードを入力してください:');
+    const keyword = prompt('ゲームタイトルを入力');
     if (keyword) {
       $.ajax({
         url: `/items/search?keyword=${keyword}`,
